@@ -3,7 +3,7 @@ global.app = express.createServer()
 io         = require('socket.io').listen(app)
 assets     = require('connect-assets')
 
-ip = '192.168.1.6'
+ip = '172.25.3.126'
 
 app.use assets()
 app.use express.static(__dirname + '/assets')

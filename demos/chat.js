@@ -18,7 +18,7 @@ var server = net.createServer(function(socket){
     socket.on('end',function(){
         sockets.forEach(function(s,i){
             if(s == socket){
-                sockets.slice(i,1);
+                sockets.splice(i,1);
             }
         });
     });

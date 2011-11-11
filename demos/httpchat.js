@@ -13,14 +13,11 @@ var server = net.createServer(function (c) {
 });
 
 
-
 var httpserver = http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain' });
   connections.push(res);
 });
 
 
-
-server.listen(9001);
-httpserver.listen(9000);
-
+server.listen(8001);
+httpserver.listen(8000);

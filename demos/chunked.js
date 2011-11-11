@@ -11,4 +11,4 @@ http.createServer(function (req, res) {
   }, 2000);
 
 }).listen(8000);
-
+console.log('Server started on port 8000');

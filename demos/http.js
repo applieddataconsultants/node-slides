@@ -7,5 +7,5 @@ var s = http.createServer(function(req,res){
     res.end('Hello World');
 });
 
-s.listen(3000);
-console.log('Server started on port 3000');
+s.listen(8000);
+console.log('Server started on port 8000');

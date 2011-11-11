@@ -1,0 +1,338 @@
+!=css('slides')
+!=js('Slides')
+
+#connect Establishing Connection with Server
+
+#slides
+  .slide
+    h1 welcome to node.js
+    .center
+      img.framed(src='/img/nodejs.png')
+      p
+        b Who: 
+        a(href="http://wavded.com") Marc Harter
+        br
+        b Twitter: 
+        a(href="http://twitter.com/wavded") @wavded
+        br
+        br
+
+      p Visit 
+        b http://#{ip}:#{app.address().port}/ 
+        | in your browser
+
+    .speaker
+      ul
+        li Hi and welcome
+        li Plug for ADC
+
+  .slide
+    h1 node.js in a nutshell
+    ul
+      li Server-side JavaScript
+      li Built on Google V8 Runtime
+      li Non-blocking I/O (Async)
+      li Evented (Event Loop)
+      li Module system
+      li Binary support
+      li Native on MacOS, Linux, Windows, + other Unix
+
+    .speaker
+      ul
+        li Who's heard of node.js?
+        li Who's used it for anything?
+
+  .slide
+    h1 server-side JS
+    p A brief history...
+    ul
+      li Netscape LiveWire (1996)
+      li Rhino (1997)
+      li Aptana Jaxer (2008)
+      li RingoJS
+      li Narwhal
+      li node.js (2009)
+      li IronJS
+
+    .speaker
+      ul
+        li RingoJS based on Rhino (JVM)
+        li IronJS JavaScript Implementation for .NET
+
+  .slide 
+    h1 We can write better servers
+    .center I/O - Concurrency
+
+  .slide 
+    h1 Blocking I/O (Sync)
+    pre
+      | <?php
+      |   echo "Hello";
+      |   file_get_contents("/path/to/file");
+      |   echo "World";
+      | ?>
+
+    .speaker
+      ul
+        li I/O blocks execution
+        li What is the server doing while its waiting? Typicall nothing.
+
+  .slide
+    h1 I/O is not free
+    ul
+      li L1: 3 cycles
+      li L2: 14 cycles
+      li RAM: 250 cycles
+    hr
+    ul
+      li: b DISK: 41,000,000 cycles
+      li: b NETWORK: 240,000,000 cycles
+    p: small
+      a(href='http://duartes.org/gustavo/blog/post/what-your-computer-does-while-you-wait')
+        | http://duartes.org/gustavo/blog/post/what-your-computer-does-while-you-wait
+
+    .speaker
+      ul
+        li L1, L2, RAM considered non-blocking
+        li Disk, Network is blocking
+
+  .slide
+    h1 NGINX vs. Apache
+    .center
+      // p requests per second
+      img(src="/img/reqs.png")
+      p: small
+        a(href="http://blog.webfaction.com/a-little-holiday-present") http://blog.webfaction.com/a-little-holiday-present
+
+    .speaker
+      ul
+        li How a server handles I/O (blocking and non-blocking) matters
+
+  .slide
+    h1 NGINX vs. Apache
+    .center
+      // p memory usage
+      img(src="/img/memory.png")
+      p: small
+        a(href="http://blog.webfaction.com/a-little-holiday-present") http://blog.webfaction.com/a-little-holiday-present
+
+    .speaker
+      ul
+        li How a server handles I/O (blocking and non-blocking) matters
+
+  .slide
+    h1 NGINX vs. Apache
+    ul
+      li Apache uses one thread per connection
+      li NGINX doesn't use multiple threads but instead uses an event loop
+
+  .slide
+    h1 Threads
+    p Threads aren't free, each execution stack takes memory.
+    p Threads introduce additional complexity
+    ul
+      li Race conditions
+      li Additional setup overhead
+      li Deadlock
+      li System/Application confusion
+
+  .slide
+    h1 The Event Loop
+    ul
+      li Efficient (if used asynchronously)
+      li Only one stack
+      li No memory overhead
+      li Simpler model, no deadlocks or race conditions
+
+  .slide
+    h1 Non-blocking I/O (Async)
+    pre
+      | console.log('Hello');
+      | fs.readFile('/path/to/file', function(err, data) {
+      |   // ...
+      | });
+      | console.log("World");
+
+  .slide
+    h1 Demo Time
+    p.center C++/NodeJS on I/O
+
+  .slide
+    h1 An Illustration
+    .center
+      img(src='/img/waiting-room.gif')
+      p: small
+        a(href="http://groups.google.com/group/nodejs/browse_thread/thread/487852eb1db88492")
+          | http://groups.google.com/group/nodejs/browse_thread/thread/487852eb1db88492
+
+  .slide
+    h1 Why JavaScript?
+    ul
+      li JS devs already think asynchronously (AJAX)
+      li JS is fast and 
+        a(href="http://arewefastyet.com") getting faster
+      li JS quickly becoming a 
+        a(href="https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS") compilation target
+      li No existing synchronous libs
+      li Since node.js uses one JS VM, you don't have to code for different engines, just one
+      li EcmaScript 5 and Harmony Features when available
+      li Code sharing between the client and server
+      li JSON native ( &lt;3 nosql dbs, e.g. <a href="//couchdb.apache.org">CouchDB</a>, <a href="//mongodb.org">MongoDB</a> )
+
+    .speaker
+      ul
+        li Existing sync libs, e.g. Python core does not work in Twisted
+        li No need to wait for all browsers to catch up
+
+  .slide
+    h1 More Demos
+
+  .slide
+    h1 What are people creating?
+    ul
+      li
+        a(href="https://github.com/LearnBoost/node-canvas") node-canvas
+        | 
+        small Server-side HTML5 Canvas
+      li
+        a(href="https://github.com/tmpvar/jsdom") jsdom
+        | 
+        small Server-side DOM
+        ul
+          li
+            a(href="http://express.davglass.com/") yui3
+            | 
+            small Rendering JS UI lib components server-side
+          li
+            a(href="http://zombie.labnotes.org/") zombie
+            | 
+            small Headless browser testing
+      li
+        a(href="http://minimason.no.de/") node-webgl
+        | 
+        small Server-side WebGL
+      li
+        a(href="http://expressjs.com") express
+        | 
+        small Web framework, fast and simple
+      li
+        a(href="http://vowsjs.org") vows
+        | 
+        small Asyncronous BDD testing framework
+      li
+        a(href="http://learnboost.github.com/stylus/") stylus
+        | 
+        small Expressive, dynamic, robust CSS templating
+      li
+        a(href="http://jade-lang.com") jade
+        | 
+        small HTML templating engine
+      li
+        a(href="http://socket.io") socket.io
+        | 
+        small WebSockets for everyone
+        ul
+          li
+            a(href="https://github.com/socketstream/socketstream") socketstream
+            | 
+            small Real-time web framework
+      li
+        a(href="http://hummingbirdstats.com/") hummingbird
+        | 
+        small Real-time traffic monitoring
+      li
+        a(href="https://github.com/hookio/hook.io") hook.io
+        | 
+        small Massively distributed event-emitter
+      li
+        a(href="https://github.com/dannycoates/node-inspector") node-inspector
+        | 
+        small Webkit-like debugging console
+      li
+        a(href="https://github.com/felixge/node-mysql") mysql
+        | 
+        small MySQL db client
+      li
+        a(href="https://github.com/brianc/node-postgres") pg
+        | 
+        small Fast JS and Native PostgreSQL client
+      li
+        a(href="http://mongoosejs.com/") mongoose
+        | 
+        small Feature-rich MongoDB ODM
+      li
+        a(href='http://nodeknockout.com/') Node Knockout
+
+  .slide
+    h1 issues with node.js
+    ul
+      li Still relatively young
+      li Raw computation
+      ul
+        li Bad idea to do it on the main thread
+        li: a(href='https://github.com/pgriess/node-webworker') node-webworker
+      li Callbacks!
+        ul
+          li: a(href="https://github.com/creationix/step") Step
+          li: a(href="https://github.com/caolan/async") Async.js
+          li: a(href="https://github.com/substack/node-seq") Seq
+      li Error handling
+        ul
+          li Always killing stack on each turn around the event loop
+          li Same problem we have in the web browser
+
+  .slide 
+    h1 Getting Setup
+    ul
+      li
+        a(href="https://github.com/joyent/node/wiki/Installation") Node Setup Instructions
+      li 
+        a(href="http://npmjs.org") NPM
+        | 
+        small Node Package Manager
+    p Other Helpers
+    ul
+      li 
+        a(href="https://github.com/isaacs/node-supervisor") supervisor
+        | 
+        small Code watcher and reloader
+      li
+        a(href="https://github.com/indexzero/forever") forever
+        | 
+        small Daemonizer, respawner
+
+  .slide
+    h1 Thanks!
+    p Technologies used in this presentation:
+    ul
+      li Server Side
+        ul
+          li
+            a(href="http://nodejs.org") NodeJS
+          li
+            a(href="http://expressjs.com") Express
+          li
+            a(href="http://socket.io") Socket.io
+          li
+            a(href="http://jade-lang.com") Jade
+          li
+            a(href="http://learnboost.github.com/stylus") Stylus
+          li
+            a(href="http://github.com/TrevorBurnham/connect-assets") Connect Assets / Snockets
+      br
+      li Client Side
+        ul
+          li
+            a(href="http://documentcloud.github.com/backbone") jQuery
+          li
+            a(href="http://documentcloud.github.com/backbone") Backbone
+
+img.logo(src='/img/adc.png')
+
+#footer
+  a(href="http://github.com/applieddataconsultants/node-slides", target='_blank')
+    | http://github.com/applieddataconsultants/node-slides
+  .upper
+    | Marc Harter 
+    a(href="http://twitter.com/wavded") @wavded
+

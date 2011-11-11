@@ -1,0 +1,97 @@
+@import 'nib'
+@import url(http://fonts.googleapis.com/css?family=Ubuntu%20Mono)
+
+html, body
+  height: 100%
+  max-height: 100%
+  overflow: hidden
+  padding: 0
+  margin: 0
+
+body
+  font-family: "Ubuntu Mono"
+  font-size: 150%
+  background: linear-gradient(top,#aaa,#fff) no-repeat
+
+h1
+  text-align: center
+  font-family: "Ubuntu Mono"
+  font-size: 3em
+  margin-top: 0.2em
+
+pre
+  background: #000 linear-gradient(top,#000,#333)
+  padding: 15px
+  color: #ffa
+  border-radius: 15px
+  box-shadow: 0 8px 8px -8px #000
+
+.framed
+  background-color: #000
+  padding: 10px
+  box-shadow: 0 8px 8px -8px #000
+
+.center
+  text-align: center
+
+.upper
+  margin-top: -55px
+  a
+    color: #000 !important
+
+#slides
+  top: 25%
+
+.slide
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  overflow: hidden
+  display: inline-block
+  vertical-align: middle
+  padding: 3em
+  opacity: 0
+  transition: all .4s
+  transform: scaleY(10)
+  z-index: 1
+
+.active
+  transform: scaleY(1)
+  z-index: 2
+  opacity: 1
+
+.slide .speaker
+  display: none
+
+#footer
+  font-size: 0.8em
+  height: 22px
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  padding: 5px 15px 10px
+  background: linear-gradient(top,#666,#333)
+  box-shadow: 0 -2px 2px #000
+  z-index: 2
+  a
+    color: #fff
+
+.logo
+  position: absolute
+  right: -30px
+  bottom: -45px
+  overflow: hidden
+  z-index: 3
+
+#connect
+  display: none
+  background-color: yellow
+  padding: 10px
+  color: #000
+  font-weight: bold
+  position: absolute
+  top: 0
+  left: 0

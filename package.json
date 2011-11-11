@@ -1,0 +1,14 @@
+{
+    "name" : "intro-to-node",
+    "private" : true,
+    "version": "0.0.0",
+    "author": "Marc Harter",
+    "dependencies": {
+      "express": "",
+      "connect-assets": "",
+      "socket.io": "",
+      "jade": "",
+      "stylus": "",
+      "nib": ""
+    }
+}

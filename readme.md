@@ -1,4 +1,14 @@
-# NodeJS
+# node.js Slides
+
+## Building and Running
+
+After cloning, from the project root: (requires [node.js](http://nodejs.org) and [npm](http://npmjs.org) to be installed)
+
+```sh
+npm install
+sudo npm install -g coffee-script
+coffee app.coffee
+```
 
 ## Credits
 

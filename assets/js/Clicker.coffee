@@ -7,6 +7,7 @@ Clicker = Backbone.View.extend
    events:
       "click #previous": 'prevSlide'
       'click #next': 'nextSlide'
+   allowEmit: true
 
    initialize: (options = {}) ->
       { @socket, @slides } = options
@@ -19,11 +20,13 @@ Clicker = Backbone.View.extend
    _bindSocket: ->
       @socket.on 'changeto', (id) =>
          @slideId = id
-         @update(true)
+         @allowEmit = false
+         @update()
 
       @socket.on 'startfrom', (id) =>
          @slideId = id
-         @update(true)
+         @allowEmit = false
+         @update()
 
       @socket.on "connect", ->
          $("#connect").hide()
@@ -40,7 +43,11 @@ Clicker = Backbone.View.extend
          @slideId++
          @update()
 
-   update: (preventEmit) ->
+   update: () ->
+      if @allowEmit
+         @socket.emit("changeto", @slideId)
+      @allowEmit = true
+
       $('#current').text @slideId
       localStorage.currentSlideId = @slideId
 
@@ -49,8 +56,6 @@ Clicker = Backbone.View.extend
       $("#slide-title").text(current.find("h1").text())
       $("#speaker-note").html(current.find(".speaker").html())
       $("#next-slide-title").html(next.find("h1").html() || "")
-      if not preventEmit
-         @socket.emit("changeto", @slideId)
 
 $ ->
    connection = io.connect()

@@ -16,6 +16,8 @@ SlideRouter = Backbone.Router.extend
       # Down arrow
       "40": -> @navigate "/slide/#{ if @slideId < @slides.size() then @slideId + 1 else @slides.size() }", true
 
+   allowEmit: true
+
    initialize: (options = {}) ->
       { @slides, @socket } = options
       $(window).keydown (e) =>
@@ -27,8 +29,8 @@ SlideRouter = Backbone.Router.extend
       @_bindSocket()
 
    _bindSocket: ->
-      @socket.on 'changeto', (id) => @navigate "/slide/#{id}", true
-      @socket.on 'startfrom', (id) => @navigate "/slide/#{id}", true
+      @socket.on 'changeto', (id) => @allowEmit = false; @navigate "/slide/#{id}", true
+      @socket.on 'startfrom', (id) => @allowEmit = false; @navigate "/slide/#{id}", true
 
       @socket.on "connect", ->
          $("#connect").hide()
@@ -37,7 +39,10 @@ SlideRouter = Backbone.Router.extend
 
    activate: (id) ->
       @slideId = parseInt(id)
-      @socket.emit("changeto", @slideId)
+      if @allowEmit
+         @socket.emit("changeto", @slideId)
+      @allowEmit = true
+
       @slides.removeClass("active")
       slide = @slides.get(id - 1)
       $(slide).addClass("active")

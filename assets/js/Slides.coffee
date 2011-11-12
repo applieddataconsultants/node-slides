@@ -7,14 +7,24 @@ SlideRouter = Backbone.Router.extend
       "/slide/:id": "activate"
 
    keys:
+      # Home
+      "36": -> @navigate "/slide/1", true
+      # End
+      "35": -> @navigate "/slide/#{@slides.length}", true
+      # Page Up
+      "33": -> @navigate "/slide/#{ if @slideId > 1 then @slideId - 1 else 1 }", true
       # Left arrow
       "37": -> @navigate "/slide/#{ if @slideId > 1 then @slideId - 1 else 1 }", true
       # Up arrow
       "38": -> @navigate "/slide/#{ if @slideId > 1 then @slideId - 1 else 1 }", true
+      # Page Down
+      "34": -> @navigate "/slide/#{ if @slideId < @slides.size() then @slideId + 1 else @slides.size() }", true
       # Right arrow
       "39": -> @navigate "/slide/#{ if @slideId < @slides.size() then @slideId + 1 else @slides.size() }", true
       # Down arrow
       "40": -> @navigate "/slide/#{ if @slideId < @slides.size() then @slideId + 1 else @slides.size() }", true
+      # Space
+      "32": -> @navigate "/slide/#{ if @slideId < @slides.size() then @slideId + 1 else @slides.size() }", true
 
    allowEmit: true
    keyboardEnabled: false

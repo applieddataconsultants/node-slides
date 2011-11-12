@@ -17,6 +17,7 @@ SlideRouter = Backbone.Router.extend
       "40": -> @navigate "/slide/#{ if @slideId < @slides.size() then @slideId + 1 else @slides.size() }", true
 
    allowEmit: true
+   keyboardEnabled: false
 
    initialize: (options = {}) ->
       { @slides, @socket } = options
@@ -25,7 +26,8 @@ SlideRouter = Backbone.Router.extend
          if action
             e.preventDefault()
             e.stopPropagation()
-            action.call(@)
+            if @keyboardEnabled then action.call(@)
+      $("#keyboard-enable").click (e) => alert('Enabled Keyboard'); @keyboardEnabled = true
       @_bindSocket()
 
    _bindSocket: ->

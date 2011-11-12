@@ -132,8 +132,8 @@
     p Threads introduce additional complexity
     ul
       li Race conditions
-      li Additional setup overhead
       li Deadlock
+      li Additional setup overhead
       li System/Application confusion
 
   .slide
@@ -237,6 +237,14 @@
             | 
             small Real-time web framework
       li
+        a(href="https://github.com/substack/dnode") dnode
+        | 
+        small Async RPC System (ports for Perl, Ruby, PHP, JAVA)
+
+  .slide
+    h1 What are even more people creating?
+    ul
+      li
         a(href="http://hummingbirdstats.com/") hummingbird
         | 
         small Real-time traffic monitoring
@@ -262,6 +270,35 @@
         small Feature-rich MongoDB ODM
       li
         a(href='http://nodeknockout.com/') Node Knockout
+        | 
+        small Coding competition
+      li And 
+        a(href='http://search.npmjs.org/') many
+        | 
+        a(href='https://github.com/joyent/node/wiki/modules') more
+        | !
+  .slide
+    h1 Where is it used?
+    p Use Cases
+    ul
+      li
+        a(href="http://voxer.com/") Voxer
+        | 
+        small VOIP Service
+      li
+        a(href="http://transload.it/") TransloadIt
+        | 
+        small File uploading, conversion service
+      li
+        a(href="http://applieddataconsultants") Applied Data Consultants
+        | 
+        small Production web applications, internal scripts
+    p More Resources
+    ul
+      li
+        a(href="http://www.quora.com/Node-js/What-companies-are-using-Node-js-in-production") More Production Use Cases
+      li
+        a(href="https://github.com/joyent/node/wiki/Projects,-Applications,-and-Companies-Using-Node") Companies, Projects Using Node
 
   .slide
     h1 issues with node.js
@@ -269,7 +306,7 @@
       li Still relatively young
       li Raw computation
       ul
-        li Bad idea to do it on the main thread
+        li Bad idea to do it in an event loop
         li: a(href='https://github.com/pgriess/node-webworker') node-webworker
       li Callbacks!
         ul
@@ -302,7 +339,7 @@
         small Daemonizer, respawner
 
   .slide
-    h1 Thanks!
+    h1 Thanks and Questions?
     p Technologies used in this presentation:
     ul
       li Server Side
@@ -333,7 +370,9 @@ img.logo(src='/img/adc.png')
 #footer
   a(href="http://github.com/applieddataconsultants/node-slides", target='_blank')
     | http://github.com/applieddataconsultants/node-slides
+  | &nbsp; &nbsp;
   .upper
     | Marc Harter 
     a(href="http://twitter.com/wavded") @wavded
-
+    | 
+    a= ip

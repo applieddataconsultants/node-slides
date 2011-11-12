@@ -41,7 +41,7 @@ SlideRouter = Backbone.Router.extend
 
    activate: (id) ->
       @slideId = parseInt(id)
-      if @allowEmit
+      if @allowEmit and @keyboardEnabled
          @socket.emit("changeto", @slideId)
       @allowEmit = true
 

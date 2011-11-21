@@ -10,6 +10,8 @@ sudo npm install -g coffee-script
 coffee app.coffee
 ```
 
+Visit `http://localhost:3000` in a browser to view the slides.  Visit `http://localhost:3000/clicker` to control them in another browser.  The app is iOS and Andriod tested as well for the clicker portion.
+
 ## Credits
 
 Built around an idea from [@EsaMatti](http://twitter.com/EsaMatti)'s project [geekslides](https://github.com/epeli/geekslides).

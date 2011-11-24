@@ -56,6 +56,7 @@ Clicker = Backbone.View.extend
       $("#slide-title").text(current.find("h1").text())
       $("#speaker-note").html(current.find(".speaker").html())
       $("#next-slide-title").html(next.find("h1").html() || "")
+      document.title = current.find("h1").text()
 
 $ ->
    connection = io.connect()

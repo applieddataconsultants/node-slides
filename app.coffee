@@ -2,14 +2,17 @@ express    = require("express")
 global.app = express.createServer()
 io         = require('socket.io').listen(app)
 assets     = require('connect-assets')
+port       = 3000
 
-ip = '192.168.236.169'
+app.set 'views', __dirname + '/views'
 
-app.use assets()
+app.configure 'development', -> app.use assets()
+app.configure 'production',  -> port = 8005; app.use assets( build: true, buildDir: false, detectChanges: false )
+
 app.use express.static(__dirname + '/assets')
 
-app.get '/', (req,res) -> res.render('slides.jade', { ip: ip })
-app.get '/clicker', (req,res) -> res.render('clicker.jade')
+app.get '/', (req,res) -> res.render 'slides.jade'
+app.get '/clicker', (req,res) -> res.render 'clicker.jade'
 
 slides_io = io.of("/slides")
 clicker_io = io.of("/clicker")
@@ -29,5 +32,5 @@ slides_io.on "connection", (socket) ->
       clicker_io.emit("changeto", slideId)
       socket.broadcast.emit("changeto", slideId)
 
-app.listen(3000)
-console.log("Listening on http://localhost:3000/")
+app.listen port
+console.log "Listening on http://localhost:#{port}/"

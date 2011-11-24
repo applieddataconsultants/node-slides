@@ -17,9 +17,11 @@
         br
         br
 
-      p Visit 
-        b http://#{ip}:#{app.address().port}/ 
-        | in your browser
+      p Remote control slidedeck from:
+        br
+        b.clicker_url
+      p
+        small Note: You may not be the only one controlling these
 
     .speaker
       ul
@@ -375,4 +377,4 @@ img.logo(src='/img/adc.png')
     | Marc Harter 
     a(href="http://twitter.com/wavded") @wavded
     | 
-    a= ip
+    span.clicker_url

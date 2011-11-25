@@ -5,7 +5,7 @@
     "author": "Marc Harter",
     "dependencies": {
       "express": "",
-      "connect-assets": "2.1.3",
+      "connect-assets": "",
       "socket.io": "",
       "jade": "",
       "stylus": "",

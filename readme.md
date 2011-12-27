@@ -5,9 +5,9 @@
 After cloning, from the project root: (requires [node.js](http://nodejs.org) and [npm](http://npmjs.org) to be installed)
 
 ```sh
-npm install
 sudo npm install -g coffee-script
-coffee app.coffee
+npm rebuild
+make watch
 ```
 
 Visit `http://localhost:3000` in a browser to view the slides.  Visit `http://localhost:3000/clicker` to control them in another browser.  The app is iOS and Andriod tested as well for the clicker portion.

@@ -1,6 +1,6 @@
 .PHONY: deploy watch clean touch
-project=node-slides
-path=/var/www/node/node-slides
+project=node-slides-uwec
+path=/var/www/node-slides-uwec
 instance=\033[36;01m${project}\033[m
 
 all: watch
@@ -21,11 +21,11 @@ deploy:
 
 touch: server = sawyer@172.25.20.130
 touch:
-	@wget -r -l 1 -q http://slides.wavded.com/
+	@wget -r -l 1 -q http://uwecslides.adceval.com/
 	@echo " ${instance} | built main assets on ${server}"
-	@wget -r -l 1 -q http://slides.wavded.com/clicker
+	@wget -r -l 1 -q http://uwecslides.adceval.com/clicker
 	@echo " ${instance} | built clicker assets on ${server}"
-	@rm -rf slides.wavded.com
+	@rm -rf uwecslides.adceval.com
 
 watch:
 	@if ! which supervisor > /dev/null; then echo "supervisor required, installing..."; sudo npm install -g supervisor; fi

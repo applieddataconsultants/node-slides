@@ -1,6 +1,6 @@
 .PHONY: deploy watch clean touch
 project=node-slides
-path=/var/www/node-slides
+path=/var/www/node/node-slides
 instance=\033[36;01m${project}\033[m
 
 all: watch

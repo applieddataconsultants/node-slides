@@ -1,345 +1,255 @@
 !=css('slides')
+!=css('leaflet')
+!=css('map')
 !=js('Slides')
+!=js('wgx_counties')
+!=js('lib/leaflet/leaflet')
 
 #connect Establishing Connection with Server
 
 #slides
+  
+
   .slide
-    h1 welcome to node.js
+    h1 the ADC team
     .center
-      img.framed(src='/img/nodejs.png')
-      p
-        b Who: 
-        a(href="http://wavded.com") Marc Harter
-        br
-        b Twitter: 
-        a(href="http://twitter.com/wavded") @wavded
-        br
-        br
-
-      p Remote control slidedeck from:
-        br
-        b.clicker_url
-      p
-        small Note: You may not be the only one controlling these
+      img.framed(src='/img/xmas_adc.png')
+    p marketing, graphic design, GIS (tech, analyst, programmer), project managers, QA/QC, product support, IT, accounting, sales, web development, cartography, software development
 
     .speaker
       ul
-        li Hi and welcome
-        li Plug for ADC
+        li 
+        li 
+        
+  .slide
+    h1 the development team
+    .center
+      img.framed(src='/img/xmas_team.png')
+    
+    p
+      b history
+      br
+      | 2004:  one dev (me), propriatary ESRI 
+      br
+      | 2005 - 2006: 2 devs, 1 student intern
+      br
+      | 2007: 4 devs, 1 student intern, 1 contractor
+      br
+      | 2008: launched adc4web.com
+      br
+      | 2009: taught internal web programming course to GIS techs
+      br
+      | 2010 - 2012: 6 full time software engineers, 1-2 student interns 
+      br 
+      | Alumni of UWEC, UW-Stout, UWSP, CVTC 
+
+    .speaker
+      ul
+        li 1996 - 2004 GIS, some development in ESRI scripting languages
+        li 2004 - (Levi) webguide
+        li 2005 - Ace Hardware, InfoUSA (everything goes to the web, Google Maps, GMail)
+        li 2006 - (Josh) WNM
+        li 2007 - (Marc, Colin) Smartt, Vexray
+        li 2008 - adc4web, EAGL-i
+        li 2009 - (Peter) wgx, Elite Extra
+        li 2010 - pdfer, kathwap, ogre
+        li 2011 - (Myles, Jon) ARC     
 
   .slide
-    h1 node.js in a nutshell
+    h1 technology
     ul
-      li Server-side JavaScript
-      li Built on Google V8 Runtime
-      li Non-blocking I/O (Async)
-      li Evented (Event Loop)
-      li Module system
-      li Binary support
-      li Native on MacOS, Linux, Windows, + other Unix
+      li server - java, php, python, ruby, jruby, perl, C, C++, nodejs, clojure, scala
+      li client - javascript, jquery, extjs, backbone, nodejs, coffeescript, html5, css3
+      li web APIs - openlayers, leaflet, bing map, google map, yql, REST, SOAP
+      li database - postgresql, mysql, mssql, oracle, couchdb, mongodb, sqlite
+      li scripting - bash, python
+      li CMS - wordpress, drupal
+      li web frameworks - struts, stripes, rails, express
+      li source control - subversion, git
 
     .speaker
       ul
-        li Who's heard of node.js?
-        li Who's used it for anything?
+        li
+        li
+        
+  .slide 
+    h1 Dev Tools
+    ul
+      li Linux (Ubuntu)
+      li vi (vim, gvim) 
+      li git / github.com
+      li Netbeans Java IDE
+      li ssh, screen, rsync
+
+    p
+    | devs shifted to Ubuntu linux several years ago and have increased productivity and happiness (support and project managers are switching to linux and getting same reaction)
+          
+    .speaker
+      ul
+        li devs shifted to Ubuntu linux several years ago and have seen great increases in productivity and happiness
+          li support and PMs are switching to linux and getting same reaction
+        li advantages of developing on same platform as servers
+        li productivity gained on OS vs closed
+        li gui not entirely evil, but slower to navigate than command line
+        
 
   .slide
-    h1 server-side JS
-    p A brief history...
+    h1 philosophy
     ul
-      li Netscape LiveWire (1996)
-      li Rhino (1997)
-      li Aptana Jaxer (2008)
-      li RingoJS
-      li Narwhal
-      li node.js (2009)
-      li IronJS
+      li we &#9829; OpenSource
+        ul 
+          li mature options with proven performance
+          li avoid vendor lock
+          li defined standards allow for interoperability
+          li community of peers to learn from
+      li service based infrastructures are scalable and reusable
+        ul 
+          li loosely coupled
+          li easier to implement, maintain, optimize 
 
     .speaker
       ul
-        li RingoJS based on Rhino (JVM)
-        li IronJS JavaScript Implementation for .NET
+        li 
+        li
+        
+  .slide
+    h1 Keys to Success 
+    h2.hidden Keys to Success 
+    p
+      b Smart & Gets things Done - Joel Spolsky http://www.joelonsoftware.com/
+      pre
+        | People who are Smart but don’t Get Things Done often have PhDs and work in big companies 
+        | where nobody listens to them because they are completely impractical. They would rather 
+        | mull over something academic about a problem rather than ship on time. 
+      pre 
+        | People who Get Things Done but are not Smart will do stupid things, seemingly without 
+        | thinking about them, and somebody else will have to come clean up their mess later. 
+        | This makes them net liabilities to the company because not only do they fail to 
+        | contribute, but they soak up good people’s time.
+    p   
+      b github.com 
+      | - Social coding platform
+      br
+      | see what is trending, follow projects, fork and modify, report bugs 
+      
+      
+      ul
+        li https://github.com/torvalds/linux
+        li https://github.com/apache
+        li https://github.com/facebook
+        li https://github.com/twitter
+        li https://github.com/google
+        li https://github.com/applieddataconsultants
+        
+      | viewing a devs code and history of commits is way more valuable than a resume  
+
+    .speaker
+      ul
+        li 
+        li        
 
   .slide 
-    h1 We can write better servers
-    .center I/O - Concurrency
+    h1.hidden projects
+    table
+      tr
+        td
+            b County Government
+            #leaflet-map
+            script(type='text/javascript')
+                var myMap = new L.Map('leaflet-map',{
+                            /* static map options */
+                            dragging: false,
+                            touchZoom: false,
+                            scrollWheelZoom: false,
+                            doubleClickZoom: false,
+                            zoomControl: false,
+                            attributionControl: false,
+                            trackResize: false,
+                            fadeAnimation: false,
+                            zoomAnimation: false
+                        });
+            
+                myMap.setView(new L.LatLng(44.7, -90), 6);
+                var geojsonLayer = new L.GeoJSON();
 
-  .slide 
-    h1 Blocking I/O (Sync)
-    pre
-      | <?php
-      |   echo "Hello";
-      |   file_get_contents("/path/to/file");
-      |   echo "World";
-      | ?>
+                geojsonLayer.on("featureparse", function (e) {
+                  if (e.properties && e.properties.url) {
+                    e.layer.on('click', function(ee){
+                      window.open(e.properties.url);
+                    });
+                  }
 
-    .speaker
-      ul
-        li I/O blocks execution
-        li What is the server doing while its waiting? Typicall nothing.
+                  if (e.properties && e.properties.status && e.layer.setStyle){
+                    var color = "#DDDDDD";
+                    var t = e.properties.status;
+                    var colormap = {
+                      "wgx":"#000080",
+                      "wgx-upgrade":"#768DFF",
+                      "wg3":"#D8D8FF",
+                      "pgx":"#008000",
+                      "pgx-upgrade":"#84D884",
+                      "pg":"#C6F6C6"};
+              
+                    color = colormap[t] || color;
+                    e.layer.setStyle({"color":"#FFFFFF","weight": 1,"opacity": 1,"fillOpacity":1,"fillColor":color});
+                  }else{ //default
+                    e.layer.setStyle({"color":"#DDDDDD","weight": 1,"opacity": 1 });
+                  }
+                }); //end featureparse
 
-  .slide
-    h1 I/O is not free
-    ul
-      li L1: 3 cycles
-      li L2: 14 cycles
-      li RAM: 250 cycles
-    hr
-    ul
-      li: b DISK: 41,000,000 cycles
-      li: b NETWORK: 240,000,000 cycles
-    p: small
-      a(href='http://duartes.org/gustavo/blog/post/what-your-computer-does-while-you-wait')
-        | http://duartes.org/gustavo/blog/post/what-your-computer-does-while-you-wait
+                geojsonLayer.addGeoJSON(wgx_counties);
+                myMap.addLayer(geojsonLayer);
+        td  
+            b Web Development
+            br
+            a(href='http://adc4web.com') 
+                img(src='/img/adc4web.png')     
+                
+        td  
+            b Logistics & Routing
+            br
+            a(href='http://eliteextra.com') 
+                img(src='/img/extra.png')    
+    table            
+      tr   
+        td  
+            b Site Selector
+            br
+            a(href='http://eagl-i.com/cambridge') 
+                img(src='/img/eagli.png')             
+        td  
+            b Web Apps
+            br
+            a(href='https://private.assetrecord.com') 
+                img(src='/img/arc.png')   
+        td  
+            b Web Services
+            ul
+              li 
+                a(href='http://ogre.adc4gis.com/') http://ogre.adc4gis.com/
+              li 
+                a(href='http://utils.wgxtreme.com/pdfer/') http://utils.wgxtreme.com/pdfer/
+              li 
+                a(href='http://utils.wgxtreme.com/kathwap/') http://utils.wgxtreme.com/kathwap/
+            br
+            b APIs
+            ul
+              li 
+                a(href='http://rs1.adc4gis.com/js/infousa/doc/files/InfoEvent-js.html') http://rs1.adc4gis.com/js/infousa/
+                ul
+                  li
+                    a(href='http://leads.infousa.com/Consumer/MapSelection.aspx?bas_vendor=190000') InfoUSA
+            br
+            b mobile    
+            ul
+              li
+                a(href='https://market.android.com/details?id=com.eliteextra.driver') Android  
+              li
+                | HTML5, JQuery Mobile    
+                    
 
-    .speaker
-      ul
-        li L1, L2, RAM considered non-blocking
-        li Disk, Network is blocking
-
-  .slide
-    h1 NGINX vs. Apache
-    .center
-      // p requests per second
-      img(src="/img/reqs.png")
-      p: small
-        a(href="http://blog.webfaction.com/a-little-holiday-present") http://blog.webfaction.com/a-little-holiday-present
-
-    .speaker
-      ul
-        li How a server handles I/O (blocking and non-blocking) matters
-
-  .slide
-    h1 NGINX vs. Apache
-    .center
-      // p memory usage
-      img(src="/img/memory.png")
-      p: small
-        a(href="http://blog.webfaction.com/a-little-holiday-present") http://blog.webfaction.com/a-little-holiday-present
-
-    .speaker
-      ul
-        li How a server handles I/O (blocking and non-blocking) matters
-
-  .slide
-    h1 NGINX vs. Apache
-    ul
-      li Apache uses one thread per connection
-      li NGINX doesn't use multiple threads but instead uses an event loop
-
-  .slide
-    h1 Threads
-    p Threads aren't free, each execution stack takes memory.
-    p Threads introduce additional complexity
-    ul
-      li Race conditions
-      li Deadlock
-      li Additional setup overhead
-      li System/Application confusion
-
-  .slide
-    h1 The Event Loop
-    ul
-      li Efficient (if used asynchronously)
-      li Only one stack
-      li No memory overhead
-      li Simpler model, no deadlocks or race conditions
-
-  .slide
-    h1 Non-blocking I/O (Async)
-    pre
-      | console.log('Hello');
-      | fs.readFile('/path/to/file', function(err, data) {
-      |   // ...
-      | });
-      | console.log("World");
-
-  .slide
-    h1 Demo Time
-    p.center C++/NodeJS on I/O
-
-  .slide
-    h1 An Illustration
-    .center
-      img(src='/img/waiting-room.gif')
-      p: small
-        a(href="http://groups.google.com/group/nodejs/browse_thread/thread/487852eb1db88492")
-          | http://groups.google.com/group/nodejs/browse_thread/thread/487852eb1db88492
-
-  .slide
-    h1 Why JavaScript?
-    ul
-      li JS devs already think asynchronously (AJAX)
-      li JS is fast and 
-        a(href="http://arewefastyet.com") getting faster
-      li JS quickly becoming a 
-        a(href="https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS") compilation target
-      li No existing synchronous libs
-      li Since node.js uses one JS VM, you don't have to code for different engines, just one
-      li EcmaScript 5 and Harmony Features when available
-      li Code sharing between the client and server
-      li JSON native ( &lt;3 nosql dbs, e.g. <a href="//couchdb.apache.org">CouchDB</a>, <a href="//mongodb.org">MongoDB</a> )
-
-    .speaker
-      ul
-        li Existing sync libs, e.g. Python core does not work in Twisted
-        li No need to wait for all browsers to catch up
-
-  .slide
-    h1 More Demos
-
-  .slide
-    h1 What are people creating?
-    ul
-      li
-        a(href="https://github.com/LearnBoost/node-canvas") node-canvas
-        | 
-        small Server-side HTML5 Canvas
-      li
-        a(href="https://github.com/tmpvar/jsdom") jsdom
-        | 
-        small Server-side DOM
-        ul
-          li
-            a(href="http://express.davglass.com/") yui3
-            | 
-            small Rendering JS UI lib components server-side
-          li
-            a(href="http://zombie.labnotes.org/") zombie
-            | 
-            small Headless browser testing
-      li
-        a(href="http://minimason.no.de/") node-webgl
-        | 
-        small Server-side WebGL
-      li
-        a(href="http://expressjs.com") express
-        | 
-        small Web framework, fast and simple
-      li
-        a(href="http://vowsjs.org") vows
-        | 
-        small Asyncronous BDD testing framework
-      li
-        a(href="http://learnboost.github.com/stylus/") stylus
-        | 
-        small Expressive, dynamic, robust CSS templating
-      li
-        a(href="http://jade-lang.com") jade
-        | 
-        small HTML templating engine
-      li
-        a(href="http://socket.io") socket.io
-        | 
-        small WebSockets for everyone
-        ul
-          li
-            a(href="https://github.com/socketstream/socketstream") socketstream
-            | 
-            small Real-time web framework
-      li
-        a(href="https://github.com/substack/dnode") dnode
-        | 
-        small Async RPC System (ports for Perl, Ruby, PHP, JAVA)
-
-  .slide
-    h1 What are even more people creating?
-    ul
-      li
-        a(href="http://hummingbirdstats.com/") hummingbird
-        | 
-        small Real-time traffic monitoring
-      li
-        a(href="https://github.com/hookio/hook.io") hook.io
-        | 
-        small Massively distributed event-emitter
-      li
-        a(href="https://github.com/dannycoates/node-inspector") node-inspector
-        | 
-        small Webkit-like debugging console
-      li
-        a(href="https://github.com/felixge/node-mysql") mysql
-        | 
-        small MySQL db client
-      li
-        a(href="https://github.com/brianc/node-postgres") pg
-        | 
-        small Fast JS and Native PostgreSQL client
-      li
-        a(href="http://mongoosejs.com/") mongoose
-        | 
-        small Feature-rich MongoDB ODM
-      li
-        a(href='http://nodeknockout.com/') Node Knockout
-        | 
-        small Coding competition
-      li And 
-        a(href='http://search.npmjs.org/') many
-        | 
-        a(href='https://github.com/joyent/node/wiki/modules') more
-        | !
-  .slide
-    h1 Where is it used?
-    p Use Cases
-    ul
-      li
-        a(href="http://voxer.com/") Voxer
-        | 
-        small VOIP Service
-      li
-        a(href="http://transload.it/") TransloadIt
-        | 
-        small File uploading, conversion service
-      li
-        a(href="http://applieddataconsultants") Applied Data Consultants
-        | 
-        small Production web applications, internal scripts
-    p More Resources
-    ul
-      li
-        a(href="http://www.quora.com/Node-js/What-companies-are-using-Node-js-in-production") More Production Use Cases
-      li
-        a(href="https://github.com/joyent/node/wiki/Projects,-Applications,-and-Companies-Using-Node") Companies, Projects Using Node
-
-  .slide
-    h1 issues with node.js
-    ul
-      li Still relatively young
-      li Raw computation
-      ul
-        li Bad idea to do it in an event loop
-        li: a(href='https://github.com/pgriess/node-webworker') node-webworker
-      li Callbacks!
-        ul
-          li: a(href="https://github.com/creationix/step") Step
-          li: a(href="https://github.com/caolan/async") Async.js
-          li: a(href="https://github.com/substack/node-seq") Seq
-      li Error handling
-        ul
-          li Always killing stack on each turn around the event loop
-          li Same problem we have in the web browser
-
-  .slide 
-    h1 Getting Setup
-    ul
-      li
-        a(href="https://github.com/joyent/node/wiki/Installation") Node Setup Instructions
-      li 
-        a(href="http://npmjs.org") NPM
-        | 
-        small Node Package Manager
-    p Other Helpers
-    ul
-      li 
-        a(href="https://github.com/isaacs/node-supervisor") supervisor
-        | 
-        small Code watcher and reloader
-      li
-        a(href="https://github.com/indexzero/forever") forever
-        | 
-        small Daemonizer, respawner
-
+  
+  
   .slide
     h1 Thanks and Questions?
     p Technologies used in this presentation:
@@ -367,14 +277,11 @@
             a(href="http://documentcloud.github.com/backbone") Backbone
 
 img.logo(src='/img/adc.png')
-#keyboard-enable
+#keyboard-enable .
 
 #footer
   a(href="http://github.com/applieddataconsultants/node-slides", target='_blank')
     | http://github.com/applieddataconsultants/node-slides
   | &nbsp; &nbsp;
   .upper
-    | Marc Harter 
-    a(href="http://twitter.com/wavded") @wavded
-    | 
-    span.clicker_url
+    | Levi.Felling@adc4gis.com 

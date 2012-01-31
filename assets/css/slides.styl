@@ -17,7 +17,10 @@ h1
   text-align: center
   font-family: "Ubuntu Mono"
   font-size: 3em
-  margin-top: 0.2em
+  margin-top: 0
+
+.hidden
+  display: none
 
 pre
   background: #000 linear-gradient(top,#000,#333)
@@ -50,15 +53,20 @@ pre
   right: 0
   overflow: hidden
   display: inline-block
-  vertical-align: middle
-  padding: 3em
+  vertical-align: top
+  padding: 1em 3em 3em 3em
   opacity: 0
-  transition: all .4s
-  transform: scaleY(10)
   z-index: 1
+  transition: all .5s
+  
+.animateY
+  transform: scaleY(10)
+.animateX
+  transform: scaleX(10)  
 
 .active
   transform: scaleY(1)
+  transform: scaleX(1)
   z-index: 2
   opacity: 1
 
@@ -103,3 +111,5 @@ pre
   bottom: 30px
   right: 50px
   z-index: 4
+  
+

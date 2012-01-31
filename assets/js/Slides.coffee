@@ -37,7 +37,7 @@ SlideRouter = Backbone.Router.extend
             e.preventDefault()
             e.stopPropagation()
             if @keyboardEnabled then action.call(@)
-      $("#keyboard-enable").click (e) => alert('Enabled Keyboard'); @keyboardEnabled = true
+      $("#keyboard-enable").click (e) => @keyboardEnabled = true
       $('.clicker_url').html "<a href='//#{location.host}/clicker'>#{location.host}/clicker"
       @_bindSocket()
 
@@ -56,10 +56,22 @@ SlideRouter = Backbone.Router.extend
          @socket.emit("changeto", @slideId)
       @allowEmit = true
 
+      # attempt to make the transitions more natural  
+      if((Math.floor(Math.random()*100) % 3) ==0)
+        @slides.addClass("animateX")  
+        @slides.removeClass("animateY") 
+      else if((Math.floor(Math.random()*100) % 2) ==0)
+        @slides.addClass("animateY")  
+        @slides.removeClass("animateX")
+      else
+        @slides.removeClass("animateX")
+        @slides.removeClass("animateY")
+         
       @slides.removeClass("active")
       slide = @slides.get(id - 1)
       $(slide).addClass("active")
       document.title = $(".active h1").text()
+        
 
 $ ->
    connection = io.connect()

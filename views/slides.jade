@@ -13,35 +13,29 @@
   .slide
     h1 the ADC team
     .center
-      img.framed(src='/img/xmas_adc.png')
-    p marketing, graphic design, GIS (tech, analyst, programmer), project managers, QA/QC, product support, IT, accounting, sales, web development, cartography, software development
+      img(src='/img/xmas_adc.png')
 
     .speaker
       ul
-        li 
-        li 
+        li marketing, graphic design, GIS (tech, analyst, programmer), project managers, QA/QC, product support, IT, accounting, sales, cartography
         
   .slide
     h1 the development team
     .center
-      img.framed(src='/img/xmas_team.png')
-    
-    p
-      b history
-      br
-      | 2004:  one dev (me), propriatary ESRI 
-      br
-      | 2005 - 2006: 2 devs, 1 student intern
-      br
-      | 2007: 4 devs, 1 student intern, 1 contractor
-      br
-      | 2008: launched adc4web.com
-      br
-      | 2009: taught internal web programming course to GIS techs
-      br
-      | 2010 - 2012: 6 full time software engineers, 1-2 student interns 
-      br 
-      | Alumni of UWEC, UW-Stout, UWSP, CVTC 
+      img(src='/img/xmas_team.png')
+    .speaker
+      
+  .slide  
+    h1 history
+    ul
+      li 1996 - 2004: GIS programming, propriatary ESRI scripting (VB, .NET)
+      li 2004 one dev (me), propriatary ESRI -> web
+      li 2005 - 2006: 2 devs, 1 student intern
+      li 2007: 4 devs, 1 student intern, 1 contractor
+      li 2008 - 2009: launched adc4web.com, cross trained GIS techs in web programming
+      li 2010 - 2012: 6 full time software engineers, 1-2 student interns 
+ 
+    p Alumni of UWEC, UW-Stout, UWSP, CVTC 
 
     .speaker
       ul
@@ -58,14 +52,14 @@
   .slide
     h1 technology
     ul
-      li server - java, php, python, ruby, jruby, perl, C, C++, nodejs, clojure, scala
-      li client - javascript, jquery, extjs, backbone, nodejs, coffeescript, html5, css3
+      li server - <b>java</b>, <b>php</b>, <b>python</b>, ruby, jruby, perl, C, C++, <b>nodejs</b>, clojure, scala
+      li client - <b>javascript</b>, jquery, extjs, backbone, coffeescript, html5, css3
       li web APIs - openlayers, leaflet, bing map, google map, yql, REST, SOAP
-      li database - postgresql, mysql, mssql, oracle, couchdb, mongodb, sqlite
+      li database - <b>postgresql</b>, mysql, mssql, oracle, couchdb, mongodb, sqlite
       li scripting - bash, python
       li CMS - wordpress, drupal
       li web frameworks - struts, stripes, rails, express
-      li source control - subversion, git
+      li source control - subversion, <b>git</b>
 
     .speaker
       ul
@@ -82,57 +76,47 @@
       li ssh, screen, rsync
 
     p
-    | devs shifted to Ubuntu linux several years ago and have increased productivity and happiness (support and project managers are switching to linux and getting same reaction)
+    | The Devs shifted to Ubuntu linux several years ago and have increased productivity and happiness. Some support and project managers are switching their desktop OS to linux.
           
     .speaker
       ul
-        li devs shifted to Ubuntu linux several years ago and have seen great increases in productivity and happiness
-          li support and PMs are switching to linux and getting same reaction
         li advantages of developing on same platform as servers
-        li productivity gained on OS vs closed
+        li being involved in the OS community makes you a better coder
         li gui not entirely evil, but slower to navigate than command line
         
 
   .slide
-    h1 philosophy
+    h1 We &#9829; OpenSource
     ul
-      li we &#9829; OpenSource
-        ul 
-          li mature options with proven performance
-          li avoid vendor lock
-          li defined standards allow for interoperability
-          li community of peers to learn from
-      li service based infrastructures are scalable and reusable
-        ul 
-          li loosely coupled
-          li easier to implement, maintain, optimize 
+      li mature options with proven performance
+      li avoid vendor lock
+      li defined standards allow for interoperability
+      li community of peers to learn from
 
     .speaker
       ul
         li 
         li
-        
   .slide
     h1 Keys to Success 
-    h2.hidden Keys to Success 
-    p
-      b Smart & Gets things Done - Joel Spolsky http://www.joelonsoftware.com/
-      pre
-        | People who are Smart but don’t Get Things Done often have PhDs and work in big companies 
-        | where nobody listens to them because they are completely impractical. They would rather 
-        | mull over something academic about a problem rather than ship on time. 
-      pre 
-        | People who Get Things Done but are not Smart will do stupid things, seemingly without 
-        | thinking about them, and somebody else will have to come clean up their mess later. 
-        | This makes them net liabilities to the company because not only do they fail to 
-        | contribute, but they soak up good people’s time.
-    p   
-      b github.com 
-      | - Social coding platform
-      br
-      | see what is trending, follow projects, fork and modify, report bugs 
-      
-      
+    ul
+      li 
+        | Smart & Gets things Done - Joel Spolsky 
+        a(href='http://www.joelonsoftware.com') joelonsoftware.com
+      li produce more than you consume
+      li release early & often
+      li automate everything
+      li refactor relentlessly
+      li have fun!
+    
+    .speaker
+      ul
+        li test, tdd 
+                
+  .slide
+    h1 github.com 
+    p Social coding platform. See what is trending, follow projects, fork and modify, report bugs 
+
       ul
         li https://github.com/torvalds/linux
         li https://github.com/apache
@@ -141,7 +125,7 @@
         li https://github.com/google
         li https://github.com/applieddataconsultants
         
-      | viewing a devs code and history of commits is way more valuable than a resume  
+     p Code sample and commit history is more valuable than a resume!  
 
     .speaker
       ul
@@ -149,24 +133,22 @@
         li        
 
   .slide 
-    h1.hidden projects
-    table
-      tr
-        td
-            b County Government
-            #leaflet-map
+    h1 County Government
+    .center
+      #leaflet-map
             script(type='text/javascript')
                 var myMap = new L.Map('leaflet-map',{
-                            /* static map options */
+                        attributionControl: false
+                            /* static map options 
                             dragging: false,
                             touchZoom: false,
                             scrollWheelZoom: false,
                             doubleClickZoom: false,
                             zoomControl: false,
-                            attributionControl: false,
                             trackResize: false,
                             fadeAnimation: false,
                             zoomAnimation: false
+                            */
                         });
             
                 myMap.setView(new L.LatLng(44.7, -90), 6);
@@ -198,58 +180,55 @@
                 }); //end featureparse
 
                 geojsonLayer.addGeoJSON(wgx_counties);
-                myMap.addLayer(geojsonLayer);
-        td  
-            b Web Development
-            br
-            a(href='http://adc4web.com') 
-                img(src='/img/adc4web.png')     
-                
-        td  
-            b Logistics & Routing
-            br
-            a(href='http://eliteextra.com') 
-                img(src='/img/extra.png')    
-    table            
-      tr   
-        td  
-            b Site Selector
-            br
-            a(href='http://eagl-i.com/cambridge') 
-                img(src='/img/eagli.png')             
-        td  
-            b Web Apps
-            br
-            a(href='https://private.assetrecord.com') 
-                img(src='/img/arc.png')   
-        td  
-            b Web Services
-            ul
-              li 
-                a(href='http://ogre.adc4gis.com/') http://ogre.adc4gis.com/
-              li 
-                a(href='http://utils.wgxtreme.com/pdfer/') http://utils.wgxtreme.com/pdfer/
-              li 
-                a(href='http://utils.wgxtreme.com/kathwap/') http://utils.wgxtreme.com/kathwap/
-            br
-            b APIs
-            ul
-              li 
-                a(href='http://rs1.adc4gis.com/js/infousa/doc/files/InfoEvent-js.html') http://rs1.adc4gis.com/js/infousa/
-                ul
-                  li
-                    a(href='http://leads.infousa.com/Consumer/MapSelection.aspx?bas_vendor=190000') InfoUSA
-            br
-            b mobile    
-            ul
-              li
-                a(href='https://market.android.com/details?id=com.eliteextra.driver') Android  
-              li
-                | HTML5, JQuery Mobile    
-                    
+                myMap.addLayer(geojsonLayer);            
+  .slide 
+    h1 Web Development
+    .center
+      a(href='http://adc4web.com') 
+        img(src='/img/adc4web.png')     
 
-  
-  
+  .slide 
+    h1 Logistics & Routing
+    .center
+      a(href='http://eliteextra.com') 
+        img(src='/img/extra.png')  
+        
+  .slide 
+    h1 Site Selector
+    .center
+      a(href='http://eagl-i.com/cambridge') 
+        img(src='/img/eagli.png')  
+                 
+  .slide 
+    h1 Web Apps
+    .center
+      a(href='https://private.assetrecord.com') 
+        img(src='/img/arc.png')  
+       
+  .slide 
+    h1.hidden Example Projects
+    b Web Services
+    ul
+      li 
+        a(href='http://ogre.adc4gis.com/') http://ogre.adc4gis.com/
+      li 
+        a(href='http://utils.wgxtreme.com/pdfer/') http://utils.wgxtreme.com/pdfer/
+      li 
+        a(href='http://utils.wgxtreme.com/kathwap/') http://utils.wgxtreme.com/kathwap/
+    b APIs
+    ul
+      li 
+        a(href='http://rs1.adc4gis.com/js/infousa/doc/files/InfoEvent-js.html') http://rs1.adc4gis.com/js/infousa/
+        ul
+          li
+            a(href='http://leads.infousa.com/Consumer/MapSelection.aspx?bas_vendor=190000') InfoUSA
+    b Mobile    
+    ul
+      li
+        a(href='https://market.android.com/details?id=com.eliteextra.driver') Android  
+      li
+        | HTML5, JQuery Mobile  
+          
   .slide
     h1 Thanks and Questions?
     p Technologies used in this presentation:

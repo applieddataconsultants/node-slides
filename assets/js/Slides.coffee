@@ -27,7 +27,7 @@ SlideRouter = Backbone.Router.extend
       "32": -> @navigate "/slide/#{ if @slideId < @slides.size() then @slideId + 1 else @slides.size() }", true
 
    allowEmit: true
-   keyboardEnabled: true # this can be disabled by default if set false
+   keyboardEnabled: false # this can be disabled by default if set false
 
    initialize: (options = {}) ->
       { @slides, @socket } = options

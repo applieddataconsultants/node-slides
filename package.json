@@ -1,35 +1,39 @@
 {
-    "name" : "node-slides",
-    "private" : true,
-    "version": "0.2.0",
-    "author": "Marc Harter <wavded@gmail.com>",
-    "description": "Sample socket.io slidedeck for talking about node.js",
-    "keywords": [ "socket.io", "intro to node", "slidedeck" ],
-    "homepage": "https://github.com/applieddataconsultants/node-slides",
-    "bugs": {
-       "url": "https://github.com/applieddataconsultants/node-slides/issues"
-    },
-    "repository": {
-       "type": "git",
-       "url": "https://github.com/applieddataconsultants/node-slides.git"
-    },
-    "scripts": {
-       "start": "coffee app.coffee"
-    },
-    "main": "app",
-    "dependencies": {
-      "express": "2.5.2",
-      "connect-assets": "2.1.6",
-      "socket.io": "0.8.7",
-      "jade": "0.19.0",
-      "stylus": "0.21.2",
-      "nib": "0.3.1"
-    },
-    "devDependencies": {
-       "coffee-script": "1.2.0"
-    },
-    "licenses": "MIT",
-    "engines": {
-       "node": ">=0.6"
-    }
+  "name": "node-slides",
+  "private": true,
+  "version": "0.2.0",
+  "author": "Marc Harter <wavded@gmail.com>",
+  "description": "Sample socket.io slidedeck for talking about node.js",
+  "keywords": [
+    "socket.io",
+    "intro to node",
+    "slidedeck"
+  ],
+  "homepage": "https://github.com/applieddataconsultants/node-slides",
+  "bugs": {
+    "url": "https://github.com/applieddataconsultants/node-slides/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/applieddataconsultants/node-slides.git"
+  },
+  "scripts": {
+    "start": "coffee app.coffee"
+  },
+  "main": "app",
+  "dependencies": {
+    "express": "2.5.8",
+    "connect-assets": "2.1.9",
+    "socket.io": "0.9.2",
+    "jade": "0.22.0",
+    "stylus": "0.24.0",
+    "nib": "0.3.2"
+  },
+  "devDependencies": {
+    "coffee-script": "1.2.0"
+  },
+  "licenses": "MIT",
+  "engines": {
+    "node": ">=0.6"
+  }
 }

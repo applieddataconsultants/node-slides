@@ -29,7 +29,7 @@ touch:
 
 watch:
 	@if ! which supervisor > /dev/null; then echo "supervisor required, installing..."; sudo npm install -g supervisor; fi
-	@supervisor -w assets,view,app.coffee app.coffee
+	@supervisor -w assets,views,app.coffee app.coffee
 
 clean:
 	@rm app.js

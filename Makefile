@@ -7,13 +7,12 @@ all: watch
 deploy: server = sawyer@172.25.20.120
 deploy:
 	@coffee -c app.coffee
-	@rsync -az --exclude=".git" --exclude="node_modules/*/build" --delete --delete-excluded * ${server}:${path}
+	@rsync -az --exclude=".git" --delete --delete-excluded * ${server}:${path}
 	@echo -e " ${instance} | copied files to ${server}"
-	@ssh ${server} "cd ${path} && npm rebuild"
-	@echo -e " ${instance} | built npm packages on ${server}"
 	@ssh ${server} "sudo cp -f ${path}/upstart.conf /etc/init/${project}.conf"
 	@echo -e " ${instance} | setting up upstart on ${server}"
-	@ssh ${server} "sudo restart ${project}"
+	@ssh ${server} "sudo stop ${project}"
+	@ssh ${server} "sudo start ${project}"
 	@echo -e " ${instance} | restarting app on ${server}"
 	@make -s clean
 	@sleep 1

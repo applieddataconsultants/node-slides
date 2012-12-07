@@ -4,27 +4,23 @@ path=/var/www/node-slides
 instance=\033[36;01m${project}\033[m
 
 all: watch
-deploy: server = sawyer@172.25.20.120
+
+deploy: serverA = sawyer@wwt-virt-util-web25
+deploy: serverB = sawyer@wwt-virt-util-web26
 deploy:
 	@coffee -c app.coffee
-	@rsync -az --exclude=".git" --delete --delete-excluded * ${server}:${path}
-	@echo -e " ${instance} | copied files to ${server}"
-	@ssh ${server} "sudo cp -f ${path}/upstart.conf /etc/init/${project}.conf"
-	@echo -e " ${instance} | setting up upstart on ${server}"
-	@ssh ${server} "sudo stop ${project}"
-	@ssh ${server} "sudo start ${project}"
-	@echo -e " ${instance} | restarting app on ${server}"
+	@rsync -az --exclude=".git" --delete --delete-excluded * ${serverA}:${path}
+	@rsync -az --exclude=".git" --delete --delete-excluded * ${serverB}:${path}
+	@echo -e " ${instance} | synced files with servers"
+	@ssh ${serverA} "sudo initctl reload-configuration"
+	@ssh ${serverB} "sudo initctl reload-configuration"
+	@echo -e " ${instance} | reloaded configuration on servers"
+	@-ssh ${serverA} "sudo stop ${project}"
+	@ssh ${serverA} "sudo start ${project}"
+	@-ssh ${serverB} "sudo stop ${project}"
+	@ssh ${serverB} "sudo start ${project}"
+	@echo -e " ${instance} | restarted apps on servers"
 	@make -s clean
-	@sleep 1
-	@make -s touch
-
-touch: server = sawyer@172.25.20.120
-touch:
-	@wget -r -l 1 -q http://slides.wavded.com/
-	@echo -e " ${instance} | built main assets on ${server}"
-	@wget -r -l 1 -q http://slides.wavded.com/clicker
-	@echo -e " ${instance} | built clicker assets on ${server}"
-	@rm -rf slides.wavded.com
 
 watch:
 	@if ! which supervisor > /dev/null; then echo "supervisor required, installing..."; sudo npm install -g supervisor; fi
